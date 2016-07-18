@@ -4,9 +4,9 @@ var app = express();
 
 app.get('/', function (req, res) {
   var ip = req.headers;
-  var lang = ip['accept-language'];
+  var lang = ip['accept-language'].split(';')[0];
   var addy = ip['x-forwarded-for'];
-  var soft = ip['user-agent'];
+  var soft = ip['user-agent'].split(') ')[0].split(' (')[1];
   
   var all = {
     'language': lang,
